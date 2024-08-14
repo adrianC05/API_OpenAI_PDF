@@ -42,12 +42,14 @@ citas_pdf_2 = extract_citations_from_pdf(pdf_path_2)
 
 # Define el prompt y el contexto para el análisis comparativo, incluyendo citas
 prompt = (
-    "Redacta una nueva introducción basada en las ideas presentadas en las introducciones de ambos documentos. "
-    "Incorpora citas bibliográficas en formato APA en el texto. Las citas disponibles son las siguientes:\n\n"
+    "Analiza la introducción de ambos documentos."
+    "Redacta una nueva introducción basada en las ideas presentadas en las introducciones de ambos documentos, la extensión de la introducción debe tener la misma extensión que la introducción mas corta. "
+    "Incorpora citas bibliográficas en formato APA en el texto y al final las referencias en APA. Las citas disponibles son las siguientes:\n\n"
     "Citas del Documento 1:\n" + citas_pdf_1 + "\n\n"
     "Citas del Documento 2:\n" + citas_pdf_2
+    
 )
-contexto = "Eres un experto en análisis de documentos."
+contexto = "Eres un experto en análisis y escrutiura de documentos y artículos científicos."
 
 # Envía el texto a la API de OpenAI para su análisis
 completion = client.chat.completions.create(
