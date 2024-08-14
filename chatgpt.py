@@ -22,6 +22,12 @@ def extract_text_from_pdf_pypdf2(pdf_path):
             text += page.extract_text()
     return text
 
+# Función para extraer citas bibliográficas (puedes mejorar la lógica de extracción)
+def extract_citations_from_pdf(pdf_path):
+    text = extract_text_from_pdf_pypdf2(pdf_path)
+    # Implementar lógica para extraer citas específicamente si es necesario
+    return text
+
 # Especifica la ruta de los archivos PDF
 pdf_path_1 = 'IA_articulo.pdf'
 pdf_path_2 = 'IA_articulo_2.pdf'
@@ -30,8 +36,17 @@ pdf_path_2 = 'IA_articulo_2.pdf'
 texto_pdf_1 = extract_text_from_pdf_pypdf2(pdf_path_1)
 texto_pdf_2 = extract_text_from_pdf_pypdf2(pdf_path_2)
 
-# Define el prompt y el contexto para el análisis comparativo
-prompt = "Redacta una nueva introducción basada en las ideas presentadas en las introducciones de ambos documentos."
+# Extrae las citas bibliográficas de ambos PDFs
+citas_pdf_1 = extract_citations_from_pdf(pdf_path_1)
+citas_pdf_2 = extract_citations_from_pdf(pdf_path_2)
+
+# Define el prompt y el contexto para el análisis comparativo, incluyendo citas
+prompt = (
+    "Redacta una nueva introducción basada en las ideas presentadas en las introducciones de ambos documentos. "
+    "Incorpora citas bibliográficas en formato APA en el texto. Las citas disponibles son las siguientes:\n\n"
+    "Citas del Documento 1:\n" + citas_pdf_1 + "\n\n"
+    "Citas del Documento 2:\n" + citas_pdf_2
+)
 contexto = "Eres un experto en análisis de documentos."
 
 # Envía el texto a la API de OpenAI para su análisis
