@@ -49,7 +49,7 @@ prompt = (
     "Citas del Documento 2:\n" + citas_pdf_2
     
 )
-contexto = "Eres un experto en análisis y escrutiura de documentos y artículos científicos."
+contexto = "Eres un experto en análisis y escritura de documentos y artículos científicos."
 
 # Envía el texto a la API de OpenAI para su análisis
 completion = client.chat.completions.create(
